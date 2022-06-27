@@ -48,25 +48,19 @@
                     <th>Postal Code</th>
                     <th>Country</th>
                     <th>Website Url</th>
-
                   </tr>
                 </thead>
-                <tbody id="myTable">
+                <tbody id="myTable1">
 
-              <tr>
-                  <td>{{$brew['street']}}</td>
-                  <td>{{$brew['address_2']}}</td>
-                  <td>{{$brew['city']}}</td>
-                  <td>{{$brew['state']}}</td>
-                  <td>{{$brew['postal_code']}}</td>
-                  <td>{{$brew['country']}}</td>
-                  <td><a href="{{$brew['website_url']}}">{{$brew['website_url']}}</a></td>
-
-
-
+              <tr class="customerIDCell">
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><a href=""></a></td>
                 </tr>
-
-
                 </tbody>
               </table>
         </div>
@@ -81,11 +75,26 @@
 
 
 <script>
+    var brews = @json($breweries);
 
 $(document).on("click", ".openModal", function () {
      var myBookId = $(this).data('id');
-     $(".modal-body #bookId").val( myBookId );
+    brews.forEach(e => {
+        if(e['id']==myBookId)
+        {
+            $('#myTable1 tr').each(function() {
+                $(this).find("td").eq(0).html(e['street']);
+                $(this).find("td").eq(1).html(e['address_2']);
+                $(this).find("td").eq(2).html(e['city']);
+                $(this).find("td").eq(3).html(e['state']);
+                $(this).find("td").eq(4).html(e['postal_code']);
+                $(this).find("td").eq(5).html(e['country']);
+                $(this).find("td").eq(6).html(e['website_url']);
 
+            });
+        }
+
+    });
 
 });
     $(document).ready(function(){

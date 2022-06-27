@@ -15,7 +15,6 @@ class BreweriesController extends Controller
     public function index(BreweriesService $allBreweries)
     {
         $breweries=$allBreweries->getBreweries();
-        //  ($breweries['name']);
         return view('home',compact('breweries'));
     }
 

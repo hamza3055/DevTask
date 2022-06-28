@@ -89,7 +89,9 @@ $(document).on("click", ".openModal", function () {
                 $(this).find("td").eq(3).html(e['state']);
                 $(this).find("td").eq(4).html(e['postal_code']);
                 $(this).find("td").eq(5).html(e['country']);
-                $(this).find("td").eq(6).html(e['website_url']);
+                if(e['website_url']){
+                $(this).find("td").eq(6).html('<a href='+e['website_url']+'>'+e['website_url']+'</a>' );
+                }
 
             });
         }
